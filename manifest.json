@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "Prompt Background",
+    "version": "1.0",
+    "description": "A test chrome extension intended to change the background on a few of the AI prompt websites.",
+    "icons":{
+        "16":""
+    },
+    "content_scripts":[
+        {
+            "js":["scripts/extension.js"],
+            "matches":["https://www.perplexity.ai/", "https://chatgpt.com/"]
+        }
+    ],
+    "actions": {
+        "default_popup": "index.html",
+        "default_icon": ""
+    }
+}
