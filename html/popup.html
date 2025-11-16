@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>New Tab Controls</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 12px; width: 300px; }
+    fieldset { border: 1px solid #ddd; border-radius: 8px; padding: 12px; margin-bottom: 12px; }
+    legend { font-weight: 700; }
+    label { display: block; margin: 6px 0; }
+    input[type="text"] { width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; }
+    .hint { color:#666; }
+    .row { display:flex; gap:10px; align-items:center; }
+    .pill { font-size:12px; color:#666; }
+  </style>
+</head>
+<body>
+  <fieldset>
+    <legend>Homepage (New Tab)</legend>
+    <label><input type="radio" name="target" value="chatgpt"> chatgpt.com</label>
+    <label><input type="radio" name="target" value="perplexity"> perplexity.ai</label>
+    <div class="pill">Only one can be active at a time.</div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Background Image</legend>
+    <label for="img">Image URL</label>
+    <input id="img" type="text" placeholder="https://example.com/wallpaper.jpg" />
+    <div class="hint">Updates the current ChatGPT/Perplexity tab in real time and is saved for new tabs.</div>
+  </fieldset>
+
+  <div class="row">
+    <button id="openNow" title="Open the selected homepage in this tab">Open here</button>
+    <span id="saved" class="pill" aria-live="polite"></span>
+  </div>
+
+  <script src="/scripts/popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>New Tab Settings</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 20px; max-width: 720px; }
+    fieldset { border: 1px solid #ddd; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+    label { display: block; margin: 8px 0 4px; font-weight: 600; }
+    input[type="text"] { width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #ccc; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    button { padding: 10px 14px; border-radius: 8px; border: 1px solid #ccc; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Custom New Tab</h1>
+
+  <fieldset>
+    <legend><strong>New Tab Destination</strong></legend>
+    <label><input type="radio" name="target" value="chatgpt"> chatgpt.com</label>
+    <label><input type="radio" name="target" value="perplexity"> perplexity.ai</label>
+  </fieldset>
+
+  <fieldset>
+    <legend><strong>Background Styling</strong></legend>
+    <label for="selector">CSS Selector to style</label>
+    <input id="selector" type="text" placeholder='e.g. body, main, #__next, .someClass'>
+
+    <label for="imageUrl">Background image URL</label>
+    <input id="imageUrl" type="text" placeholder="https://example.com/your-image.jpg">
+
+    <div class="row">
+      <div>
+        <label for="size">background-size</label>
+        <input id="size" type="text" placeholder="cover / contain / 100% 100%">
+      </div>
+      <div>
+        <label for="position">background-position</label>
+        <input id="position" type="text" placeholder="center / 50% 50% / top right">
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label for="repeat">background-repeat</label>
+        <input id="repeat" type="text" placeholder="no-repeat / repeat / repeat-x">
+      </div>
+      <div>
+        <label><input id="useBeforeLayer" type="checkbox"> Use fixed ::before background layer (recommended)</label>
+      </div>
+    </div>
+  </fieldset>
+
+  <div style="display:flex; gap:8px;">
+    <button id="save">Save</button>
+    <button id="reset">Reset to defaults</button>
+  </div>
+
+  <p style="color:#666; margin-top:12px;">
+    Tip: Start with selector <code>body</code>. If the site’s UI covers it with its own background,
+    keep “Use fixed ::before layer” checked for a reliable wallpaper effect.
+  </p>
+
+  <script src="/scripts/options.js"></script>
+</body>
+</html>

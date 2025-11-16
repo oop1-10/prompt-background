@@ -1,19 +1,31 @@
 {
-    "manifest_version": 3,
-    "name": "Prompt Background",
-    "version": "1.0",
-    "description": "A test chrome extension intended to change the background on a few of the AI prompt websites.",
-    "icons":{
-        "16":""
-    },
-    "content_scripts":[
-        {
-            "js":["scripts/extension.js"],
-            "matches":["https://www.perplexity.ai/", "https://chatgpt.com/"]
-        }
-    ],
-    "actions": {
-        "default_popup": "index.html",
-        "default_icon": ""
+  "manifest_version": 3,
+  "name": "Prompt Background",
+  "version": "1.1.0",
+  "description": "Override new tab and live-change background image on ChatGPT/Perplexity.",
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": [
+    "https://chatgpt.com/*",
+    "https://www.perplexity.ai/*",
+    "https://perplexity.ai/*"
+  ],
+  "chrome_url_overrides": {
+    "newtab": "/html/newtab.html"
+  },
+  "options_page": "/html/options.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://www.perplexity.ai/*",
+        "https://perplexity.ai/*"
+      ],
+      "js": ["/scripts/content.js"],
+      "run_at": "document_idle"
     }
+  ],
+  "action": {
+    "default_title": "Prompt Background",
+    "default_popup": "/html/popup.html"
+  }
 }
