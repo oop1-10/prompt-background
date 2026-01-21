@@ -12,6 +12,7 @@ const SITE = (() => {
   const h = location.hostname;
   if (h.includes("perplexity.ai")) return "perplexity";
   if (h.includes("chatgpt.com")) return "chatgpt";
+  if (h.includes("gemini.google.com")) return "gemini";
   return "unknown";
 })();
 
@@ -48,6 +49,7 @@ function applyOnPerplexity(cfg) {
 function apply(cfg) {
   if (SITE === "perplexity") applyOnPerplexity(cfg);
   else if (SITE === "chatgpt") applyOnChatGPT(cfg);
+  else if (SITE === "gemini") applyOnChatGPT(cfg);
 }
 
 chrome.storage.sync.get(DEFAULTS, (cfg) => apply(cfg));

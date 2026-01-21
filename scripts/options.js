@@ -11,6 +11,7 @@ const DEFAULTS = {
 const els = {
   targetChatGPT: () => document.querySelector('input[name="target"][value="chatgpt"]'),
   targetPerplexity: () => document.querySelector('input[name="target"][value="perplexity"]'),
+  targetGemini: () => document.querySelector('input[name="target"][value="gemini"]'),
   selector: document.getElementById("selector"),
   imageUrl: document.getElementById("imageUrl"),
   size: document.getElementById("size"),
@@ -24,6 +25,7 @@ const els = {
 function load() {
   chrome.storage.sync.get(DEFAULTS, (cfg) => {
     (cfg.target === "perplexity" ? els.targetPerplexity() : els.targetChatGPT()).checked = true;
+    (cfg.target === "gemini" ? els.targetPerplexity() : els.targetChatGPT()).checked = true;
     els.selector.value = cfg.selector || DEFAULTS.selector;
     els.imageUrl.value = cfg.imageUrl || DEFAULTS.imageUrl;
     els.size.value = cfg.size || DEFAULTS.size;

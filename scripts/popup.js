@@ -40,14 +40,17 @@ function saveImageUrl(url) {
 }
 
 function saveTarget(target) {
-  const next = target === "perplexity" ? "perplexity" : "chatgpt";
+  let next = target === "perplexity" ? "perplexity" : "chatgpt";
+  next = target === "gemini" ? "gemini" : "chatgpt";
   chrome.storage.sync.set({ target: next }, () => {
     flashSaved("Homepage set ✓");
   });
 }
 
 function destFor(target) {
-  return target === "perplexity" ? "https://www.perplexity.ai/" : "https://chatgpt.com/";
+  let dest = target === "perplexity" ? "https://www.perplexity.ai/" : "https://chatgpt.com/";
+  dest = target === "gemini" ? "https://www.gemini.google.com/" : "https://chatgpt.com/"
+  return dest;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
