@@ -28,7 +28,7 @@ function styleEl(el, cfg) {
 }
 
 function applyOnChatGPT(cfg) {
-  const sel = (cfg.selector || DEFAULTS.selector).trim() || "body";
+  const sel = "bard-sidenav-content";
   const el = document.querySelector(sel);
   if (el) styleEl(el, cfg);
 }

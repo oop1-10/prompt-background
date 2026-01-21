@@ -6,7 +6,7 @@ function go(url) {
 
 function destFor(target) {
   if (target === "perplexity") return "https://www.perplexity.ai/";
-  if (target === 'gemini') return "https://www.gemini.google.com";
+  if (target === 'gemini') return "https://gemini.google.com";
   return "https://chatgpt.com/";
 }
 
