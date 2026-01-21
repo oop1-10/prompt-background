@@ -49,7 +49,7 @@ function saveTarget(target) {
 
 function destFor(target) {
   let dest = target === "perplexity" ? "https://www.perplexity.ai/" : "https://chatgpt.com/";
-  dest = target === "gemini" ? "https://www.gemini.google.com/" : "https://chatgpt.com/"
+  dest = target === "gemini" ? "https://gemini.google.com/" : "https://chatgpt.com/"
   return dest;
 }
 
