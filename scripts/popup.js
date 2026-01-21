@@ -40,23 +40,24 @@ function saveImageUrl(url) {
 }
 
 function saveTarget(target) {
-  let next = target === "perplexity" ? "perplexity" : "chatgpt";
-  next = target === "gemini" ? "gemini" : "chatgpt";
+  const validTargets = ["chatgpt", "perplexity", "gemini"];
+  const next = validTargets.includes(target) ? target : "chatgpt";
+  
   chrome.storage.sync.set({ target: next }, () => {
     flashSaved("Homepage set ✓");
   });
 }
 
 function destFor(target) {
-  let dest = target === "perplexity" ? "https://www.perplexity.ai/" : "https://chatgpt.com/";
-  dest = target === "gemini" ? "https://gemini.google.com/" : "https://chatgpt.com/"
-  return dest;
+  if (target === "perplexity") return "https://www.perplexity.ai/";
+  if (target === "gemini") return "https://gemini.google.com/";
+  return "https://chatgpt.com/";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   chrome.storage.sync.get(DEFAULTS, ({ imageUrl, target }) => {
     imgInput.value = imageUrl || "";
-    const radio = document.querySelector(`input[name="target"][value="${target}"]`)
+    const radio = document.querySelector(`input[name="target"][value="${target}"]`) 
                || document.querySelector(`input[name="target"][value="${DEFAULTS.target}"]`);
     if (radio) radio.checked = true;
   });

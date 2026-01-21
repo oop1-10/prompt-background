@@ -24,8 +24,10 @@ const els = {
 
 function load() {
   chrome.storage.sync.get(DEFAULTS, (cfg) => {
-    (cfg.target === "perplexity" ? els.targetPerplexity() : els.targetChatGPT()).checked = true;
-    (cfg.target === "gemini" ? els.targetPerplexity() : els.targetChatGPT()).checked = true;
+    if (cfg.target === "perplexity") els.targetPerplexity().checked = true;
+    else if (cfg.target === "gemini") els.targetGemini().checked = true;
+    else els.targetChatGPT().checked = true;
+
     els.selector.value = cfg.selector || DEFAULTS.selector;
     els.imageUrl.value = cfg.imageUrl || DEFAULTS.imageUrl;
     els.size.value = cfg.size || DEFAULTS.size;
